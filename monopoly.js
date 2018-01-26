@@ -11,15 +11,17 @@ function movePlayer(x, player){
         }
 }
 function ckPos(x){
-    alert(x);
+    alert(bord[x].naam);
 }
-
+function rollDice{
+    
+}
 var i = 0;
 function ckDouble(x, y){
     
     if (x == y && i < 2){
-        randomNumberA = Math.floor(Math.random() * 6) + 1;
-        randomNumberB = Math.floor(Math.random() * 6) + 1;
+        randomNumberA = 1
+        randomNumberB = 1;
         randomNumber = randomNumberA + randomNumberB;
         currPos += randomNumber;
         i++;
@@ -35,12 +37,10 @@ function ckDouble(x, y){
 }
 
 function playerTurn(player){
-    var randomNumberA = Math.floor(Math.random() * 6) + 1;
-    var randomNumberB = Math.floor(Math.random() * 6) + 1;
+    var randomNumberA = 1;
+    var randomNumberB = 1;
     randomNumber = randomNumberA + randomNumberB;
     var tekst = "Je gooide " + randomNumberA + " en " + randomNumberB + "<br>";
-    alert(randomNumberA);
-    alert(randomNumberB);
     
     movePlayer(randomNumber, player);
     ckPos(p1.positie);
@@ -50,8 +50,8 @@ function playerTurn(player){
     
 }
 
-function showBal(){
-    document.getElementById('bal').innerHTML= bal;
+function showBal(x){
+    document.getElementById('bal').innerHTML= x.balance;
     setTimeout('showBal()', 1000);
 }
 
@@ -71,26 +71,6 @@ function endTurn(){
 function showPlayer(){
     
 }
-var arrPlek = []
-
-//function Vastgoed (verkocht, eigenaar, prijs, huur, huur1, huur2, huur3, huur4, huur5, aantalHuis, hypotheek, plek, naam) {
-//    this.verkocht = false;
-//    this.eigenaar = 0;
-//    this.prijs = prijs;
-//    this.huur = huur;
-//    this.huur1 = huur1;
-//    this.huur2 = huur2;
-//    this.huur3 = huur3;
-//    this.huur4 = huur4;
-//    this.huur5 = huur5;
-//    this.aantalHuis = 0;
-//    this.hypotheek = false;
-//    this.plek = plek;
-//    this.naam = naam;
-//    arrPlek[this.plek] = this.naam;
-//    
-//    
-//}
 
 
 function Players (id, positie, balance, gevangenis) {
@@ -121,39 +101,6 @@ switch(players){
         break;
 }
 
-//var br1 = new Vastgoed(false, false, 60, 2, 10, 30, 90, 160, 250, 0, false, 1, "Ons Dorp - Dorpsstraat");
-//var br2 = new Vastgoed(false, false, 60, 4, 20, 60, 180, 320, 450, 0, false, 3, "Ons Dorp - Brink");
-//
-//var lb1 = new Vastgoed(false, false, 100, 6, 30, 90, 270, 400, 550, 0, false, 6, "Arnhem - Steenstraat");
-//var lb2 = new Vastgoed(false, false, 100, 6, 30, 90, 270, 400, 550, 0, false, 8, "Arnhem - Ketelstraat");
-//var lb3 = new Vastgoed(false, false, 120, 8, 40, 100, 300, 450, 600, 0, false, 9, "Arnhem - Velperplein");
-//
-//var rz1 = new Vastgoed(false, false, 140, 10, 50, 150, 450, 625, 750, 0, false, 11, "Haarlem - Barteljorisstraat");
-//var rz2 = new Vastgoed(false, false, 140, 10, 50, 150, 450, 625, 750, 0, false, 13, "Haarlem - Zijlweg");
-//var rz3 = new Vastgoed(false, false, 160, 12, 60, 180, 500, 700, 900, 0, false, 14, "Haarlem - Houtweg");
-//
-//var or1 = new Vastgoed(false, false, 180, 14, 70, 200, 550, 750, 950, 0, false, 16, "Utrecht - Neude");
-//var or2 = new Vastgoed(false, false, 180, 14, 70, 200, 550, 750, 950, 0, false, 18, "Utrecht - Biltstraat");
-//var or3 = new Vastgoed(false, false, 200, 16, 80, 220, 600, 800, 1000, 0, false, 19, "Utrecht - Vreeburg");
-//
-//var rd1 = new Vastgoed(false, false, 220, 18, 90, 250, 700, 875, 1050, 0, false, 21, "Groningen - A-Kerkhof");
-//var rd2 = new Vastgoed(false, false, 220, 18, 90, 250, 700, 875, 1050, 0, false, 23, "Groningen - Groote markt");
-//var rd3 = new Vastgoed(false, false, 240, 20, 100, 300, 750, 925, 1100, 0, false, 24, "Groningen - Heerestraat");
-//
-//var ge1 = new Vastgoed(false, false, 260, 22, 110, 330, 800, 975, 1150, 0, false, 26, "'s Gravenhage - Spui");
-//var ge2 = new Vastgoed(false, false, 260, 22, 110, 330, 800, 975, 1150, 0, false, 27, "'s Gravenhage - Plein");
-//var ge3 = new Vastgoed(false, false, 280, 24, 120, 360, 850, 1025, 1200, 0, false, 29, "'s Gravenhage - Spui");
-//
-//var gr1 = new Vastgoed(false, false, 300, 26, 130, 390, 900, 1100, 1275, 0, false, 31, "Rotterdam - Hofplein");
-//var gr2 = new Vastgoed(false, false, 300, 26, 130, 390, 900, 1100, 1275, 0, false, 32, "Rotterdam - Blaak");
-//var gr3 = new Vastgoed(false, false, 320, 28, 150, 450, 1000, 1200, 1400, 0, false, 34, "Rotterdam - Hofplein");
-//
-//var bl1 = new Vastgoed(false, false, 350, 35, 175, 500, 1100, 1300, 1500, 0, false, 37, "Amsterdam - Leidsestraat");
-//var bl2 = new Vastgoed(false, false, 400, 50, 200, 600, 1400, 1700, 2000, 0, false, 39, "Amsterdam - Kalverstraat");
-
-//console.log(arrPlek[39]);
-    
-    
 class Veld{
     constructor(){
     this.verkocht = false;
@@ -162,36 +109,98 @@ class Veld{
     }     
 }
 class Vastgoed extends Veld{
-    constructor(naam){
+    constructor(naam, prijs, huur, huur1, huur2, huur3, huur4, huur5){
         super();
-        this.aantalHuis = 0;
         this.naam = naam;
+        this.prijs = prijs;
+        this.huur = huur;
+        this.huur1 = huur1;
+        this.huur2 = huur2;
+        this.huur3 = huur3;
+        this.huur4 = huur4;
+        this.huur5 = huur5;
+        this.aantalHuis = 0;
     }
 }   
 class Station extends Veld{
-    constructor(naam){
+    constructor(naam, prijs, huur, huur1, huur2, huur3){
         super();
-        
+        this.naam = naam;
+        this.prijs = prijs;
+        this.huur = huur;
+        this.huur1 = huur1;
+        this.huur2 = huur2;
+        this.huur3 = huur3;
     }
 }    
 class Nuts extends Veld{
-    constructor(naam){
+    constructor(naam, prijs, huur, huur1){
         super();
-        
+        this.naam = naam;
+        this.prijs = prijs;
+        this.huur = huur;
+        this.huur1 = huur1;
     }
 }
 class KansFonds extends Veld{
     constructor(naam){
         super();
-        
+        this.naam = naam;
     }
 }
-class Belasting extend Veld{
-    
+class Belasting extends Veld{
+    constructor(naam, prijs){
+        super();
+        this.naam = naam;
+        this.prijs = prijs;
+    }
 }
+class Overige extends Veld{
+    constructor(naam){
+        super();
+        this.naam = naam;
+    }
+}
+var bord = [" "];
+var start = new Overige("Start"); bord.push(start);
+var br1 = new Vastgoed("Ons Dorp - Dorpsstraat", 60, 2, 10, 30, 90, 160, 250); bord.push(br1);
+var af1 = new KansFonds("Algemeen Fonds"); bord.push(af1);
+var br2 = new Vastgoed("Ons Dorp - Brink", 60, 4, 20, 60, 180, 320, 450); bord.push(br2);
+var bel1 = new Belasting("Inkomstenbelasting", 200); bord.push(bel1);
+var statZ = new Station("Station Zuid", 200, 25, 50, 100, 200); bord.push(statZ);
+var lb1 = new Vastgoed("Arnhem - Steenstraat", 100, 6, 30, 90, 270, 400, 550); bord.push(lb1);
+var ks1 = new KansFonds("Kans"); bord.push(ks1);
+var lb2 = new Vastgoed("Arnhem - Ketelstraat", 100, 6, 30, 90, 270, 400, 550); bord.push(lb2);
+var lb3 = new Vastgoed("Arnhem - Velperplein",120, 8, 40, 100, 300, 450, 600); bord.push(lb3);
+var jail = new Overige("Gevangenis"); bord.push(jail);
+var rz1 = new Vastgoed("Haarlem - Barteljorisstraat", 140, 10, 50, 150, 450, 625, 750); bord.push(rz1);
+var elec = new Nuts("Elektriciteitsbedrijf", 150, 4, 10); bord.push(elec);
+var rz2 = new Vastgoed("Haarlem - Zijlweg", 140, 10, 50, 150, 450, 625, 750);bord.push(rz2);
+var rz3 = new Vastgoed("Haarlem - Houtweg", 160, 12, 60, 180, 500, 700, 900);bord.push(rz3);
+var statW = new Station("Station West", 200, 25, 50, 100, 200); bord.push(statW);
+var or1 = new Vastgoed("Utrecht - Neude", 180, 14, 70, 200, 550, 750, 950); bord.push(or1);
+var af2 = new KansFonds("Algemeen Fonds"); bord.push(af2);
+var or2 = new Vastgoed("Utrecht - Biltstraat", 180, 14, 70, 200, 550, 750, 950); bord.push(or2);
+var or3 = new Vastgoed("Utrecht - Vreeburg", 200, 16, 80, 220, 600, 800, 1000); bord.push(or3);
+var park = new Overige("Vrij Parkeren"); bord.push(park);
+var rd1 = new Vastgoed("Groningen - A-Kerkhof", 220, 18, 90, 250, 700, 875, 1050); bord.push(rd1);
+var ks2 = new KansFonds("Kans"); bord.push(ks2);
+var rd2 = new Vastgoed("Groningen - Groote Markt", 220, 18, 90, 250, 700, 875, 1050); bord.push(rd2);
+var rd3 = new Vastgoed("Groningen - Heerestraat", 240, 20, 100, 300, 750, 925, 1100); bord.push(rd3);
+var statN = new Station("Station Noord", 200, 25, 50, 100, 200); bord.push(statN);
+var ge1 = new Vastgoed("Den Haag - Spui", 260, 22, 110, 330, 800, 975, 1150); bord.push(ge1);
+var ge2 = new Vastgoed("Den Haag - Plein", 260, 22, 110, 330, 800, 975, 1150); bord.push(ge2);
+var watr = new Nuts("Waterleiding", 150, 4, 10); bord.push(watr);
+var ge3 = new Vastgoed("Den Haag - Lange Poten", 280, 24, 120, 360, 850, 1025, 1200);bord.push(ge3);
+var gTJ = new Overige("Ga naar de Gevangenis"); bord.push(gTJ);
+var gr1 = new Vastgoed("Rotterdam - Hofplein", 280, 24, 120, 360, 850, 1025, 1200);bord.push(gr1);
+var gr2 = new Vastgoed("Rotterdam - Blaak", 280, 24, 120, 360, 850, 1025, 1200);bord.push(gr2);
+var af3 = new KansFonds("Algemeen Fonds"); bord.push(af3);
+var gr3 = new Vastgoed("Rotterdam - Hofplein", 320, 28, 150, 450, 1000, 1200, 1400); bord.push(gr3);
+var statO = new Station("Station Oost", 200, 25, 50, 100, 200); bord.push(statO);
+var ks3 = new KansFonds("Kans"); bord.push(ks3);
+var bl1 = new Vastgoed("Amsterdam - Leidsestraat", 350, 35, 175, 500, 1100, 1300, 1500); bord.push(bl1);
+var bel2 = new Belasting("Extra Belasting", 200); bord.push(bel2);
+var bl2 = new Vastgoed("Amsterdam - Kalverstraat", 400, 50, 200, 600, 1400, 1700, 2000); bord.push(bl2);
 
-var d = new Vastgoed("Blaak")
-alert(d.naam);
-var bord = [];
-    
     
