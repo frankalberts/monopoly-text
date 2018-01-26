@@ -20,7 +20,7 @@
        <body>
         <form>
             <input type="button" name="button"
-             value="Gooi Dobbelstenen"  onclick="playerTurn();" id="gooien" style="display: block;">
+             value="Gooi Dobbelstenen"  onclick="playerTurn(p1);" id="gooien" style="display: block;">
              <input type="button" name="endturn" value="Beeindig beurt" onclick="endTurn();" style="display: none;" id="endturn">
         </form>
 
@@ -30,6 +30,7 @@
         <div id="gamelog"></div>
         <div id="bal"></div>
         <div id="whatP"></div>
+        <div id="infoCurrPlayer"></div>
         <script src="monopoly.js"></script>
     </body>
 </html>
