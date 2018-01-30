@@ -12,21 +12,26 @@ function movePlayer(x, player){
 }
 function ckPos(x){
     alert(bord[x].naam);
+    alert(x);
 }
-function rollDice{
+function rollDice(){
     
 }
 var i = 0;
 function ckDouble(x, y){
     
-    if (x == y && i < 2){
-        randomNumberA = 1
-        randomNumberB = 1;
+    if (x == y && i < 3){
+        randomNumberA = Math.floor(Math.random() * 6) + 1;
+        randomNumberB = Math.floor(Math.random() * 6) + 1;
         randomNumber = randomNumberA + randomNumberB;
         currPos += randomNumber;
         i++;
-    } else if (x == y && i == 2){
-        currPos = 40;
+    } else if (x == y && i == 3){
+        p1.positie = 11;
+        p1.gevangenis = true;
+        document.getElementById("endturn").style.display = "block";
+        document.getElementById("gooien").style.display = "none";
+        i = 0;
     }
     else{
         document.getElementById("gooien").style.display = "none";
@@ -37,18 +42,29 @@ function ckDouble(x, y){
 }
 
 function playerTurn(player){
-    var randomNumberA = 1;
-    var randomNumberB = 1;
+    var randomNumberA = Math.floor(Math.random() * 6) + 1;
+    var randomNumberB = Math.floor(Math.random() * 6) + 1;
     randomNumber = randomNumberA + randomNumberB;
     var tekst = "Je gooide " + randomNumberA + " en " + randomNumberB + "<br>";
-    
-    movePlayer(randomNumber, player);
-    ckPos(p1.positie);
+    if (p1.gevangenis == true && randomNumberA != randomNumberB && j > 4){
+        j++;
+        
+    } else{
     ckDouble(randomNumberA, randomNumberB);
+        if (p1.gevangenis == true){
+            
+        } else if (p1.gevangenis == true && randomNumberA == randomNumberB){
+            movePlayer(randomNumber, player);
+        } else{
+            movePlayer(randomNumber, player);
+        }
+    
+    ckPos(p1.positie);
+    }
     
     document.getElementById('gamelog').innerHTML += tekst;
-    
 }
+
 
 function showBal(x){
     document.getElementById('bal').innerHTML= x.balance;
