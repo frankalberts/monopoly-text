@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welkom!</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <header>
+    <h2>
+        Welkom op de website van text-based monopoly, gemaakt door Frank Alberts.    
+    </h2>
+       <p>Selecteer hieronder met hoeveel menselijke spelers gespeelt gaat worden.</p>
+        </header>
+        <form action="game.html" method="post">
+            <select id="players">
+                <option value="1">1 speler</option>
+                <option value="2">2 spelers</option>
+                <option value="3">3 spelers</option>
+                <option value="4">4 spelers</option>
+            </select>
+            <input type="submit" value="Begin Spel!" onclick="startGame();">
+        </form>
+    </body>
+    <script src="object.js"></script>
+    <script src="functions.js"></script>
+</html>

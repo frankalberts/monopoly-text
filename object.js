@@ -1,129 +1,12 @@
-var currPos = 0;
-var players = prompt("Hoeveel spelers? (1-4)");
-
-function movePlayer(x, player){
-        player.positie += x;
-        if (player.positie > 39){
-            player.positie = player.positie-39;
-            player.balance = player.balance + 200;
-        }
-}
-function ckPos(x){
-    alert(bord[x].naam);
-    alert(x);
-}
-
-var i = 0;
-function ckDouble(x, y){
-    
-    if (x == y && i < 3){
-        randomNumberA = Math.floor(Math.random() * 6) + 1;
-        randomNumberB = Math.floor(Math.random() * 6) + 1;
-        randomNumber = randomNumberA + randomNumberB;
-        currPos += randomNumber;
-        i++;
-    } else if (x == y && i == 3){
-        p1.positie = 11;
-        p1.gevangenis = true;
-        document.getElementById("endturn").style.display = "block";
-        document.getElementById("gooien").style.display = "none";
-        i = 0;
-    }
-    else{
-        document.getElementById("gooien").style.display = "none";
-        i = 0;
-        document.getElementById("endturn").style.display = "block";
-    }
-    
-}
-
-function playerTurn(player){
-    var randomNumberA = Math.floor(Math.random() * 6) + 1;
-    var randomNumberB = Math.floor(Math.random() * 6) + 1;
-    randomNumber = randomNumberA + randomNumberB;
-    var tekst = "Je gooide " + randomNumberA + " en " + randomNumberB + "<br>";
-    if (p1.gevangenis == true && randomNumberA != randomNumberB && j > 4){
-        j++;
-    } else{
-    ckDouble(randomNumberA, randomNumberB);
-        if (p1.gevangenis == true){
-            
-        } else if (p1.gevangenis == true && randomNumberA == randomNumberB){
-            movePlayer(randomNumber, player);
-        } else{
-            movePlayer(randomNumber, player);
-        }
-    
-    ckPos(p1.positie);
-    }
-    
-    document.getElementById('gamelog').innerHTML += tekst;
-}
-
-
-function showBal(x){
-    document.getElementById('bal').innerHTML= x.balance;
-    setTimeout('showBal()', 1000);
-}
-
-var i = 1;
-function endTurn(){
-    
-    if (i < players){
-        i++;
-    } else if (i > players){
-        i = 0;
-    }
-        document.getElementById("gooien").style.display = "block";
-        document.getElementById("endturn").style.display = "none";
-    return i;
-}
-                
-function commands(){
-    var input = document.getElementById("cmd").value;
-    
-    switch(input){
-        case "balace":
-        
-        break;
-        case "vastgoed":
-            
-        break;
-        case "trade":
-            
-        break;
-        case ""
+class Players{
+    constructor(id){
+        this.positie = 1;
+        this.balance = 1500;
+        this.gevangenis = false;
+        this.id = id;
     }
 }
-
-function Players (id, positie, balance, gevangenis) {
-    this.id = id;
-    this.positie = positie;
-    this.balance = balance;
-    this.gevangenis = gevangenis;
-    }
-
-switch(players){
-        case "1":
-        var p1 = new Players(1, 1, 1500, false);
-        break;
-        case "2":
-        var p1 = new Players(1, 1, 1500, false);
-        var p2 = new Players(2, 1, 1500, false);
-        break;
-        case "3":
-        var p1 = new Players(1, 1, 1500, false);
-        var p2 = new Players(2, 1, 1500, false);
-        var p3 = new Players(3, 1, 1500, false);
-        break;
-        case "4":
-        var p1 = new Players(1, 1, 1500, false);
-        var p2 = new Players(2, 1, 1500, false);
-        var p3 = new Players(3, 1, 1500, false);
-        var p4 = new Players(4, 1, 1500, false);
-        break;
-}
-
+    
 class Veld{
     constructor(){
     this.verkocht = false;
@@ -225,5 +108,3 @@ var ks3 = new KansFonds("Kans"); bord.push(ks3);
 var bl1 = new Vastgoed("Amsterdam - Leidsestraat", 350, 35, 175, 500, 1100, 1300, 1500); bord.push(bl1);
 var bel2 = new Belasting("Extra Belasting", 200); bord.push(bel2);
 var bl2 = new Vastgoed("Amsterdam - Kalverstraat", 400, 50, 200, 600, 1400, 1700, 2000); bord.push(bl2);
-
-    
