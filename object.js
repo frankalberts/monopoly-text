@@ -1,7 +1,7 @@
 class Players{
     constructor(id){
         this.positie = 1;
-        this.balance = 1500;
+        this.balance = 5000;
         this.gevangenis = false;
         this.id = id;
     }

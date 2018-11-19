@@ -3,8 +3,9 @@ var p1; var s1;
 var p2; var s2;
 var p3; var s3;
 var p4; var s4;
-var pTurn = 0;
-var pArray = [" "];
+var pTurn = 1;
+var pArray = [];
+
 // preparing the game with the selected players
 function startGame(){
     var select = document.getElementById('players');
@@ -48,35 +49,56 @@ function startGame(){
 }
 
 function getStorage(){
+    console.log("getstorage called");
     s1 = JSON.parse(sessionStorage.p1); pArray.push(s1);
     s2 = JSON.parse(sessionStorage.p2); pArray.push(s2);
     s3 = JSON.parse(sessionStorage.p3); pArray.push(s3);
     s4 = JSON.parse(sessionStorage.p4); pArray.push(s4);
+    console.log(pArray);
 }
 function dice(){
     var ranNumA = Math.floor(Math.random() * 6) + 1;
     var ranNumB = Math.floor(Math.random() * 6) + 1;
     var moveSpaces = ranNumA + ranNumB;
-    alert (moveSpaces);
+    if(ranNumA == ranNumB){
+        
+    }
     return moveSpaces;
 }
 function ckPTurn(){
     if(pTurn<pArray.length){
         pTurn++;
-    } else if (pTurn>pArray.length){
-        pTurn = 1;
+    } else{
+        pTurn = 1; // PTurn word weer gewijzigd naar 1, dus player 1
     }
     return pArray[pTurn - 1]
 }
-function movePlayer(x){
-    x.positie += dice();
-    alert(x.positie);
+function movePlayer(s){
+    s.positie += dice();
+    if (s.positie > 39){
+        s.positie = s.positie - 39;
+        s.balance = s.balance + 200;
+    }
+    
 }
 function turn(){
     if(pArray.length>1){
-        movePlayer(ckPTurn());
-        alert(pArray[1].positie);
-        alert(pArray[2].positie);
+        var p = ckPTurn();
+        movePlayer(p);
+        console.log(p.id + "---------------------------------------------------------------------------------------");
+        console.log(bord[p.positie].naam);
+        console.log(p.positie);
+        console.log(bord[p.positie]);
+        console.log(p.balance);
+        if (bord[p.positie].verkocht == false && bord[p.positie].prijs != null){
+            p.balance -= bord[p.positie].prijs;
+            bord[p.positie].eigenaar = p.id;
+            bord[p.positie].verkocht = true;
+        } else if (bord[p.positie].verkocht == true){
+            console.log("true");
+            p.balance -= bord[p.positie].huur;
+            pArray[bord[p.positie].eigenaar].balance += bord[p.positie].huur;
+        }
     }
 }
             
